@@ -1,0 +1,97 @@
+<%- include('../includes/head.ejs') %>
+    <main class="main-content">
+        <div class="hold">
+            <button id="panel-side__btn" type="button" class="btn btn-primary panel-side__btn">
+                Menu
+            </button>
+        </div>
+        <div id="panel-side" class="panel-side">
+            <h4 class="panel-head">Tester</h4><br>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/app">Test Url</a></li>
+                <li><a href="/api-docs">API Documentation</a></li><br>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+            <button id="close-btn" class="btn btn-primary">Close</button>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <% if(errorMessage){ %>
+                            <div class="alert alert-danger" role="alert">
+                                <%= errorMessage %>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+                <header class="section-header">
+                    <h4>Input a new Url</h4>
+                </header>
+
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <form action="/app" method="POST" class="input-line">
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend mr-4">
+                                    <button class="btn btn-primary" type="submit">Go</button>
+                                </div>
+                                <input type="text" class="form-control" name="url" required placeholder="Your Url Address">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="margin-top: 30px;">
+                <div class="note text-center">
+                    <p>Note: { <span class="text-danger">PVPU:</span> 'Page views per user', <span class="text-danger">PVPM:</span> 'Page views per million' }</p>
+                </div><br>
+                <div class="row">
+                    <% if(info.length !== 0){ count = 1 %>
+                        <% for(let data of info){ %>
+                            <div class="col-md-4">
+                                <div class="card d-block shadow-4">
+                                    <div class="hold">
+                                        <div class="badges badges-right">
+                                            <a class="badge badge-warning" href="#">
+                                                <%= count++ %>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <p>
+                                            <h4>Url Details:</h4>
+                                            <hr>
+                                            <div>
+                                                <p><span class="bold">Url:</span>
+                                                    <%= data.url %>
+                                                </p>
+                                                <p><span class="bold">Average PVPU:</span>
+                                                    <%= data.perUser %>
+                                                </p>
+                                                <p><span class="bold">Page PVPM:</span>
+                                                    <%= data.perMillion %>
+                                                </p>
+                                            </div>
+                                        </p>
+                                        <% if(user === data.user.toString()) { %>
+                                            <a class="fs-12 fw-600" href="/app/urls/<%= data._id %>">Modify</a>
+                                            <% } %>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <% } %>
+                                <% }else{ %>
+                                    <div class="col-12">
+                                        <p>No Urls in Database</p>
+                                    </div>
+                                    <% } %>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <%- include('../includes/footer.ejs') %>

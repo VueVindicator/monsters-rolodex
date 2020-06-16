@@ -1,0 +1,22 @@
+<%- include('../includes/head.ejs') %>
+    <section class="section">
+        <div class="container">
+            <header class="section-header">
+                <h4>Input a new Url</h4>
+            </header>
+
+            <form action="/app" method="POST">
+                <div class="form-group input-group">
+                    <div class="input-group-prepend mr-4">
+                        <button class="btn btn-primary" type="button">Go</button>
+                    </div>
+                    <input type="text" class="form-control" name="url" placeholder="Your Url Address">
+                </div>
+            </form>
+
+            <div>
+                <!-- <%= data %> -->
+            </div>
+        </div>
+    </section>
+    <%- include('../includes/footer.ejs') %>

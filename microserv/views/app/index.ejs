@@ -1,0 +1,36 @@
+<%- include('../includes/head.ejs') %>
+    <main class="main-content">
+        <div class="hold">
+            <button id="panel-side__btn" type="button" class="btn btn-primary panel-side__btn">
+                Menu
+            </button>
+        </div>
+        <div id="panel-side" class="panel-side">
+            <h4 class="panel-head">Tester</h4><br>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/app">Test Url</a></li>
+                <li><a href="/api-docs">API Documentation</a></li><br>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+            <button id="close-btn" class="btn btn-primary">Close</button>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mx-auto text-center">
+                        <header class="section-header">
+                            <h1>Landing Page Tester</h1>
+                        </header>
+                        <a href="/app" class="btn btn-primary">
+                            Proceed
+                        </a>
+                        <a href="/configure" class="btn btn-primary">
+                            Signup
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include('../includes/footer.ejs') %>

@@ -1,0 +1,74 @@
+<%- include('../../includes/head.ejs') %>
+    <main class="main-content">
+        <div class="hold">
+            <button id="panel-side__btn" type="button" class="btn btn-primary panel-side__btn">
+                Menu
+            </button>
+        </div>
+        <div id="panel-side" class="panel-side">
+            <h4 class="panel-head">Tester</h4><br>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/app">Test Url</a></li>
+                <li><a href="/">API Documentation</a></li>
+            </ul>
+            <button id="close-btn" class="btn btn-primary">Close</button>
+        </div>
+        <section class="section">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <% if(errorMessage){ console.log(errorMessage) %>
+
+                            <div class="alert alert-danger" role="alert">
+                                <ul>
+                                    <% for(let message of errorMessage){ %>
+                                        <li>
+                                            <%= message.msg %>
+                                        </li>
+                                        <% } %>
+                                </ul>
+                            </div>
+
+                            <% } %>
+                    </div>
+                </div>
+
+                <header class="section-header">
+                    <h4>Configure your account or Signin</h4>
+                </header>
+
+            </div>
+
+            <div class="container text-center" style="margin-top: 30px;">
+                <div class="note">
+                    <p>Note: { <span class="text-danger">ID:</span> 'Create a unique one. You will use this to authenticate requests' }</p>
+                </div><br>
+                <div class="row">
+                    <div class="col-md-12" style="margin: 0 auto; max-width: 500px;">
+                        <form action="/configure" method="POST" class="input-line">
+                            <div class="form-group input-group">
+                                <input type="email" class="form-control" name="email" required placeholder="Email Address" value="<%= data.email %>">
+                            </div>
+                            <div class="form-group input-group">
+                                <input type="text" class="form-control" name="id" required placeholder="Enter Unique ID" value="<%= data.id %>">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="format" placeholder="Select input">
+                                    <option selected value="">Select Format</option>
+                                    <option value="json">JSON</option>
+                                    <option value="xml">XML</option>
+                                </select>
+                            </div><br>
+                            <div class="btn-group">
+                                <button class="btn btn-primary" type="submit">Signup</button>
+                                <a href="/login" class="btn btn-success">Login</a>
+                            </div>
+                        </form>
+                    </div><br>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include('../../includes/footer.ejs') %>

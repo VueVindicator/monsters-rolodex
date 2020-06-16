@@ -1,0 +1,1 @@
+print(1/3) #divide 1 by 3
